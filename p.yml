@@ -1,3 +1,9 @@
+resources:
+- name: git-repo
+  type: git
+  source:
+    uri: https://github.com/7thwik/Parameter
+    branch: master
 ---
 jobs:
 - name: show-animal-names
@@ -9,9 +15,9 @@ jobs:
         type: docker-image
         source: {repository: busybox}
       inputs:
-      - name: G
+      - name: git-repo
       run:
-        path: ./G/pc.sh
+        path: ./git-repo/pc.sh
       params:
         CAT_NAME: ((cat-name))
         DOG_NAME: ((dog-name))
